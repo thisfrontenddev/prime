@@ -1,13 +1,27 @@
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { TextInput } from "react-native-paper";
 import Box from "~/components/Box";
 import Button from "~/components/Button";
 import Text from "~/components/Text";
+import { RootStackParamList } from "~/navigation/AppNavigator";
+import { Routes } from "~/navigation/routes";
+
+type LoginScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  Routes.LOGIN_SCREEN
+>;
 
 export const LoginSheet: React.FC = ({ children }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { navigate } = useNavigation<LoginScreenNavigationProp>();
+
+  const handleLoginPress = () => {
+    navigate(Routes.PRODUCT_LIST_SCREEN);
+  };
 
   return (
     <Box
@@ -22,7 +36,6 @@ export const LoginSheet: React.FC = ({ children }) => {
       <Box pt="l" pb="l">
         <TextInput
           style={styles.input}
-          autoCompleteType="email"
           keyboardType="email-address"
           placeholder="email@example.com"
           value={email}
@@ -35,7 +48,11 @@ export const LoginSheet: React.FC = ({ children }) => {
           placeholder="def!nit3lySecur3"
           onChangeText={setPassword}
         />
-        <Button style={styles.button} mode="contained">
+        <Button
+          style={styles.button}
+          mode="contained"
+          onPress={handleLoginPress}
+        >
           Log me in
         </Button>
       </Box>
