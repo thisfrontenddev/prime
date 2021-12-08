@@ -1,1 +1,11 @@
-{ "extends": "@react-native-community" }
+{
+  "extends": "@react-native-community",
+  "settings": {
+    "import/resolver": {
+      "babel-plugin-root-import": {
+        "rootPathPrefix": "~",
+        "rootPathSuffix": "src"
+      }
+    }
+  }
+}
