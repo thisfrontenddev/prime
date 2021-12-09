@@ -28,7 +28,7 @@ export const LoginSheet: React.FC = ({ children }) => {
       style={styles.root}
       p="l"
       borderTopLeftRadius="xl"
-      borderTopRightRadius="xxl"
+      borderTopRightRadius="xl"
       backgroundColor="mainBackground"
     >
       <Text variant="s1">Hi there!</Text>
